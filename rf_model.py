@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error,r2_score
 import joblib
 
 # Load data
@@ -23,7 +23,7 @@ y_pred = rf_model.predict(X)
 rmse = mean_squared_error(y, y_pred, squared=False)
 
 print('RMSE:', rmse)
-
+print("SCore: ",r2_score(y,y_pred))
 # Save model
 joblib.dump(rf_model, 'rf_model.pkl')
 

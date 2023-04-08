@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import os
-
+import json
 app = Flask(__name__)
 
 
@@ -24,7 +24,7 @@ app = Flask(__name__)
 #         self.message = message
 #         self.num = num
         
-        
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -35,6 +35,7 @@ def index():
 @app.route("/predict", methods=["POST"])
 def predict():
     # Get JSON data from request
+    
     predicts = []
     data = request.form
     # Convert data into numpy array and reshape to 2D array with one row
@@ -45,7 +46,8 @@ def predict():
     df = pd.DataFrame(data, columns=['month', 'marketing_budget', 'competitors_price', 'holidays'])
 
     # Make prediction using model
-    model = joblib.load("gbm_model.pkl")
+    model = joblib.load("gbm_model.pkl")     
+  
     prediction = model.predict(df)
     response = {"prediction": prediction.tolist()}
     predicts.append(response)

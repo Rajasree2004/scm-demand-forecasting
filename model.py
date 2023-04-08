@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
 import joblib
+from sklearn.metrics import r2_score
 
 # Load data from CSV file
 data = pd.read_csv("data.csv")
@@ -18,6 +19,6 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 rmse = mean_squared_error(y_test, y_pred, squared=False)
 print("RMSE:", rmse)
-
+print("SCore: ",r2_score(y_test,y_pred))
 # Save model using joblib
 joblib.dump(model, "gbm_model.pkl")
