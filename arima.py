@@ -20,5 +20,5 @@ model_fit = model.fit(disp=0)
 
 joblib.dump(model_fit, 'arima.pkl')
 # Forecast sales
-#forecast = model_fit.forecast(steps=6)[0]
+forecast = model_fit.forecast(steps=6)[0]
 
