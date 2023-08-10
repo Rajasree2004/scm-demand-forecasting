@@ -107,7 +107,7 @@
     </div>
   </div>
   <script>
-    var myList = {{ data | tojson }};
+    var myList = {{ data | tojson | safe }};
     console.log(myList);
     Highcharts.chart('container', {
      chart: {
